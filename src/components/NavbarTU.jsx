@@ -21,8 +21,8 @@ import {
 } from "@heroicons/react/24/outline";
 
 const navigation = [
-  { name: "New", href: "/", current: false },
-  { name: "Women", href: "/", current: false },
+  { name: "New", href: "/products", current: false },
+  { name: "Women", href: "/women", current: false },
   { name: "Men", href: "/men", current: false },
   { name: "About us", href: "/about", current: false },
 ];
@@ -52,7 +52,9 @@ export default function Example() {
               </div>
               <div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
                 <div className="flex flex-shrink-0 items-center">
+                  <Link href={'/'}>
                     <h1 className="font-bold text-xl">APRIL</h1>
+                  </Link>
                 </div>
                 <div className="hidden sm:ml-6 sm:block">
                   <div className="flex space-x-4">
@@ -76,8 +78,10 @@ export default function Example() {
               </div>
               <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
                 <HeartIcon className="h-6 w-6 mx-2" />
-                <ShoppingBagIcon className="h-6 w-6 mx-2"/>
-                <MagnifyingGlassIcon className="h-6 w-6 mx-2"/>
+                <Link href={'/carrito'}>
+                  <ShoppingBagIcon className="h-6 w-6 mx-2" />
+                </Link>
+                <MagnifyingGlassIcon className="h-6 w-6 mx-2" />
                 {/* Profile dropdown */}
                 <Menu as="div" className="relative ml-3">
                   <div>

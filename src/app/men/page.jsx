@@ -1,16 +1,12 @@
 import { AdjustmentsHorizontalIcon, ChevronDownIcon } from "@heroicons/react/24/outline"
-import ProductCard from "@/components/ProductCard"
 import { Menu, MenuButton, MenuItem, MenuItems, Transition } from '@headlessui/react'
-
-import {
-  ArchiveBoxXMarkIcon,
-  PencilIcon,
-  Square2StackIcon,
-  TrashIcon,
-} from '@heroicons/react/16/solid'
+import ProductCardV2 from "@/components/ProductCardV2"
+import productos from "@/data"
 
 
 function Menpage() {
+  const filteredArray = productos.filter((item) => item.categoria === 'men' || item.categoria === 'unisex')
+  console.log(filteredArray)
   return (
     <section>
       <h1 className="font-bold text-xl flex justify-center items-center">MEN</h1>
@@ -27,46 +23,12 @@ function Menpage() {
         </div>
 
         <div className=" grid grid-cols-1 lg:grid-cols-3 md:grid-cols-2 justify-items-center justify-center gap-y-14 gap-x-14">
-          <ProductCard
-            image={"remera1.jpg"}
-            titile={"BLACK T-SHIRT"}
-            price={320}
-          />
-          <ProductCard
-            image={"remera1.jpg"}
-            titile={"BLACK T-SHIRT"}
-            price={320}
-          />
-          <ProductCard
-            image={"remera1.jpg"}
-            titile={"BLACK T-SHIRT"}
-            price={320}
-          />
-          <ProductCard
-            image={"remera1.jpg"}
-            titile={"BLACK T-SHIRT"}
-            price={320}
-          />
-          <ProductCard
-            image={"remera1.jpg"}
-            titile={"BLACK T-SHIRT"}
-            price={320}
-          />
-          <ProductCard
-            image={"remera1.jpg"}
-            titile={"BLACK T-SHIRT"}
-            price={320}
-          />
-          <ProductCard
-            image={"remera1.jpg"}
-            titile={"BLACK T-SHIRT"}
-            price={320}
-          />
-          <ProductCard
-            image={"remera1.jpg"}
-            titile={"BLACK T-SHIRT"}
-            price={320}
-          />
+          {/* productos.map((item, id) => (
+            <ProductCardV2 image={item.imgSrc} title={item.Nombre.toUpperCase()} price={item.price} key={id} />
+          ))*/}
+          {productos.filter((item) => item.categoria === 'men' || item.categoria === 'unisex').map((item, id) => (
+            <ProductCardV2 image={item.imgSrc} title={item.Nombre.toUpperCase()} price={item.price} key={id} id={item.id} />
+          ))}
         </div>
       </div>
     </section>

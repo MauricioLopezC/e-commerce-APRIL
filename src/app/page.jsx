@@ -4,13 +4,14 @@ import Features from "@/components/Features";
 import ProductCard from "@/components/ProductCard";
 import remera1 from "./../../public/remera1.jpg";
 import zapatilla from "./../../public/prueba.jpg";
+import productos from "@/data";
 
 export default function Home() {
   return (
     <main>
       <div className="h-screen">
-        <div className="relative h-3/4 bg-[#333232]">
-          {/* <Image src={MainPicture} alt="Main picture"/> */}
+        <div className="relative h-3/4 bg-[#333232] bg-cover bg-no-repeat bg-center" style={{backgroundImage: "url('portada.jpg')", height: "75%", }}>
+          {/*<img src="portada.jpg" alt="" className="rounded-t-lg rounded-b-lg object-none h-3/4 w-full px-2 " /> */}
           <div className="absolute inset-0 flex justify-center items-center">
             <button className="w-full mx-2 px-8 py-2 bg-white md: max-w-md">SHOP ALL</button>
           </div>
@@ -24,37 +25,13 @@ export default function Home() {
           <h2 className="font-bold">NEW ARRIVAL</h2>
           <p className="text-gray-600">MORE</p>
         </div>
+        {/* new arraival*/}
         <div className="flex gap-6 overflow-x-auto mb-16 mx-6">
-          <ProductCard
-            image={"remera1.jpg"}
-            titile={"BLACK T-SHIRT"}
-            price={320}
-          />
-          <ProductCard image={"prueba.jpg"} titile={"NIKE SHOES"} price={200} />
-          <ProductCard
-            image={"remera1.jpg"}
-            titile={"BLACK T-SHIRT"}
-            price={320}
-          />
-          <ProductCard image={"prueba.jpg"} titile={"NIKE SHOES"} price={200} />
-          <ProductCard
-            image={"remera1.jpg"}
-            titile={"BLACK T-SHIRT"}
-            price={320}
-          />
-          <ProductCard image={"prueba.jpg"} titile={"NIKE SHOES"} price={200} />
-          <ProductCard
-            image={"remera1.jpg"}
-            titile={"BLACK T-SHIRT"}
-            price={320}
-          />
-          <ProductCard image={"prueba.jpg"} titile={"NIKE SHOES"} price={200} />
-          <ProductCard
-            image={"remera1.jpg"}
-            titile={"BLACK T-SHIRT"}
-            price={320}
-          />
-          <ProductCard image={"prueba.jpg"} titile={"NIKE SHOES"} price={200} />
+          {productos.map((item, id) => (
+            <ProductCard image={item.imgSrc} titile={item.Nombre} price={item.price} key={id} />
+          ))}
+
+
         </div>
       </section>
     </main>
