@@ -4,96 +4,73 @@ const productos = [
     "Nombre": 'black t-shirt',
     "categoria": 'men', //puede ser men, women, unisex
     "price": 100,
-    "imgSrc": 'remera1.jpg'
+    "imgSrc": '/remera1.jpg'
   },
   {
     "id": 1,
-    "Nombre": 'Nike shoes',
+    "Nombre": 'green Nike shoes',
     "categoria": 'men', //puede ser men, women, unisex
     "price": 200,
-    "imgSrc": 'prueba.jpg'
+    "imgSrc": '/prueba.jpg'
   },
   {
     "id": 2,
     "Nombre": 'jeans levis',
     "categoria": 'men', //puede ser men, women, unisex
     "price": 200,
-    "imgSrc": 'jeans.jpg'
+    "imgSrc": '/jeans.jpg'
   },
   {
     "id": 3,
-    "Nombre": 'Remera',
+    "Nombre": 'women t-shirt',
     "categoria": 'women', //puede ser men, women, unisex
     "price": 200,
-    "imgSrc": 'remeraMujer.jpg'
+    "imgSrc": '/remeraMujer.jpg'
   },
   {
     "id": 4,
-    "Nombre": 'Campera marron',
+    "Nombre": 'brown jacket',
     "categoria": 'women', //puede ser men, women, unisex
     "price": 200,
-    "imgSrc": 'campera.jpg'
+    "imgSrc": '/campera.jpg'
   },
   {
     "id": 5,
-    "Nombre": 'Campera cuero',
+    "Nombre": 'leather jacket',
     "categoria": 'unisex', //puede ser men, women, unisex
     "price": 200,
-    "imgSrc": 'camperaCuero.jpg'
+    "imgSrc": '/camperaCuero.jpg'
   },
   {
     "id": 6,
-    "Nombre": 'Zapatilla Nike Roja',
+    "Nombre": 'red nike shoes',
     "categoria": 'unisex', //puede ser men, women, unisex
     "price": 200,
-    "imgSrc": 'zapatillaRoja.jpg'
+    "imgSrc": '/zapatillaRoja.jpg'
   },
   {
     "id": 7,
-    "Nombre": 'Zapatilla Nike Pastel',
+    "Nombre": 'Pastel Nike shoes',
     "categoria": 'unisex', //puede ser men, women, unisex
     "price": 200,
-    "imgSrc": 'zapatillaVioleta.jpg'
+    "imgSrc": '/zapatillaVioleta.jpg'
   },
   {
     "id": 8,
-    "Nombre": 'Zapatilla Nike',
+    "Nombre": 'nike shoes model 2',
     "categoria": 'unisex', //puede ser men, women, unisex
     "price": 200,
-    "imgSrc": 'zapatilla2.jpg'
+    "imgSrc": '/zapatilla2.jpg'
   },
   {
     "id": 9,
-    "Nombre": 'Remera Blanca',
+    "Nombre": 'white t-shirt',
     "categoria": 'unisex', //puede ser men, women, unisex
     "price": 200,
-    "imgSrc": 'remeraBlanca.jpg'
+    "imgSrc": '/remeraBlanca.jpg'
   },
 ]
 
-export const carrito = [
-  {
-    "id": 7,
-    "Nombre": 'Zapatilla Nike Pastel',
-    "categoria": 'unisex', //puede ser men, women, unisex
-    "price": 200,
-    "imgSrc": 'zapatillaVioleta.jpg'
-  },
-  {
-    "id": 8,
-    "Nombre": 'Zapatilla Nike',
-    "categoria": 'unisex', //puede ser men, women, unisex
-    "price": 200,
-    "imgSrc": 'zapatilla2.jpg'
-  },
-  {
-    "id": 9,
-    "Nombre": 'Remera Blanca',
-    "categoria": 'unisex', //puede ser men, women, unisex
-    "price": 200,
-    "imgSrc": 'remeraBlanca.jpg'
-  }
-]
 
 export default productos
 

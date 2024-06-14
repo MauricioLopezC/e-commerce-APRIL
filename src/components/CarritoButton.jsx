@@ -3,7 +3,7 @@ import ConfirmDialog from "@/app/products/[productsId]/ConfirmDialog"
 import { useProductStore } from "@/store/productStore"
 import { useState } from "react"
 
-function CarritoButton({ producto }) {
+function CarritoButton({ producto, cantidad }) {
   const carrito = useProductStore((state) => state.carrito)
   const updateCarrito = useProductStore((state) => state.updateCarrito)
 
@@ -14,7 +14,26 @@ function CarritoButton({ producto }) {
       <button
         className='max-w-md w-full px-4 py-2 bg-black text-white mt-2'
         onClick={() => {
-          updateCarrito([...carrito, producto])
+          let band = false
+
+          carrito.forEach((item) => {
+            if (item.id === producto.id) {
+              band = true
+            }
+          })
+
+          if (band) {
+            const updatedCarrito = carrito.map((item) => {
+              if (item.id === producto.id) {
+                return { ...producto, cantidad: cantidad }
+              } else {
+                return item
+              }
+            })
+            updateCarrito(updatedCarrito)
+          } else {
+            updateCarrito([...carrito, { ...producto, cantidad: cantidad }])
+          }
 
           //confirm dilog
           setIsOpen(true)
@@ -22,7 +41,7 @@ function CarritoButton({ producto }) {
       >
         Agregar al carrito
       </button>
-      <ConfirmDialog isOpen={isOpen} setIsOpen={setIsOpen}/>
+      <ConfirmDialog isOpen={isOpen} setIsOpen={setIsOpen} />
     </>
   )
 }

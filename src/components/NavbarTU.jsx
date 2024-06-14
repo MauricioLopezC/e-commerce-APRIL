@@ -12,19 +12,21 @@ import {
 } from "@headlessui/react";
 import {
   Bars3Icon,
-  BellIcon,
   XMarkIcon,
   UserIcon,
   HeartIcon,
   ShoppingBagIcon,
   MagnifyingGlassIcon
 } from "@heroicons/react/24/outline";
+import SearchDialog from "./SearchDialog";
+import { useState } from "react";
+
 
 const navigation = [
-  { name: "New", href: "/products", current: false },
-  { name: "Women", href: "/women", current: false },
-  { name: "Men", href: "/men", current: false },
-  { name: "About us", href: "/about", current: false },
+  { name: "Nuevo", href: "/products", current: false },
+  { name: "Mujer", href: "/women", current: false },
+  { name: "Hombre", href: "/men", current: false },
+  { name: "About", href: "/about", current: false },
 ];
 
 function classNames(...classes) {
@@ -32,6 +34,7 @@ function classNames(...classes) {
 }
 
 export default function Example() {
+  const [searchOpen, setSearchOpen] = useState(false)
   return (
     <Disclosure as="nav" className="sticky top-0 z-10 bg-white">
       {({ open }) => (
@@ -81,7 +84,13 @@ export default function Example() {
                 <Link href={'/carrito'}>
                   <ShoppingBagIcon className="h-6 w-6 mx-2" />
                 </Link>
-                <MagnifyingGlassIcon className="h-6 w-6 mx-2" />
+                <button onClick={() => {
+                  setSearchOpen(true)
+                }}>
+                  <MagnifyingGlassIcon className="h-6 w-6 mx-2" />
+                </button>
+                <SearchDialog isOpen={searchOpen} setIsOpen={setSearchOpen} />
+
                 {/* Profile dropdown */}
                 <Menu as="div" className="relative ml-3">
                   <div>

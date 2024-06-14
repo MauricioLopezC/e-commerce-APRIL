@@ -2,10 +2,10 @@ import Image from "next/image";
 function About() {
   return (
     <div className="container mx-auto px-4 mt-3 mb-16">
-      <section className=" lg:flex lg:gap-4">
-        <div>
-          <div className="font-bold flex py-8 lg:py-16">
-            <h1>ABOUT US</h1>
+      <section className="lg:flex lg:gap-4 justify-around">
+        <div id='block1' className="max-w-xl">
+          <div className="font-bold flex py-8 lg:py-8">
+            <h1>ACERCA DE NOSOTROS</h1>
           </div>
           <div>
             <Image
@@ -17,21 +17,18 @@ function About() {
             />
           </div>
           <div className="py-6">
-            <p>Welcome to APRIL where luxury meets sustainabiblity</p>
+            <p>Bienvenido a ABRIL donde el lujo se une a la sostenibilidad</p>
             <br />
             <p>
-              Our brand is dedicated to crafting premium clothing, shoes and
-              bags using a blend of high-quality materias and innovative
-              recycled fabrics
+              Nuestra marca se dedica a confeccionar ropa, zapatos y bolsos de primera calidad utilizando una combinación de materiales de alta calidad y tejidos reciclados innovadores.
             </p>
             <br />
             <p>
-              Each pice is meticulously designed not to only elevate your style
-              but also minimize our enviroment footprint
+              Cada pieza está meticulosamente diseñada no solo para realzar su estilo sino también para minimizar nuestra huella ambiental.
             </p>
           </div>
-          <button className="bg-gray-900 text-white font-bold py-2 rounded-md w-full lg:max-w-lg">
-            READ MORE
+          <button className="bg-gray-900 text-white font-bold py-2 w-full lg:max-w-lg">
+            LEER MAS
           </button>
         </div>
         <div>
@@ -48,12 +45,12 @@ function About() {
       </section>
 
       <section className="mt-16">
-        <div className="lg:flex lg:justify-between lg:items-center">
+        <div className="lg:flex lg:justify-around lg:items-center">
           <div>
-            <h1 className="font-bold text-xl lg:py-6">SUBSCRIPTION</h1>
+            <h1 className="font-bold text-xl lg:py-6 text-center">SUSCRIBIRSE</h1>
             <div className="flex items-center">
               <Image
-                src="/modelo.jpg"
+                src="/portada.jpg"
                 width={3831}
                 height={4174}
                 alt="image of the bussiness"
@@ -64,12 +61,12 @@ function About() {
 
           <div className="lg:flex lg:flex-col lg:items-center px-16 lg:max-w-lg">
             <div className="flex justify-center py-4">
-              <h1 className="font-bold text-lg">STAY CONNECTED</h1>
+              <h1 className="font-bold text-lg">CONECTATE</h1>
             </div>
             <p>
-              Sing up for our newsletter and be the first to receive the latest
-              fashion news, exclusive offers and insider updates straight to
-              your inbox.
+              Suscríbete a nuestro boletín y sé el primero en recibir lo último
+              noticias de moda, ofertas exclusivas y actualizaciones internas directamente a
+              tu bandeja de entrada.
             </p>
             <div className="flex gap-1 mt-2 justify-center">
               <div className="relative">
@@ -89,12 +86,12 @@ function About() {
                 </svg>
                 <input
                   type="text"
-                  placeholder="Enter your email"
+                  placeholder="Ingresa tu email"
                   className="w-full pl-12 pr-3 py-2 text-gray-500 bg-transparent outline-none border-2 focus:border-gray-600 shadow-sm"
                 />
               </div>
               <button className="bg-gray-900 text-white px-4 py-2">
-                SUBSCRIBE
+                SUSCRIBIRSE
               </button>
             </div>
           </div>

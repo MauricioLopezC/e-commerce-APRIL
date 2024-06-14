@@ -13,31 +13,31 @@ function Footer() {
       <div>
         <h1 className="font-bold">Category</h1>
         <ul className="text-xs">
-          <li>Woman</li>
-          <li>Men</li>
-          <li>Bags</li>
+          <li>Mujer</li>
+          <li>Hombre</li>
+          <li>Zapatillas</li>
         </ul>
       </div>
       <div>
-        <h1 className="font-bold">Information</h1>
+        <h1 className="font-bold">Información</h1>
         <ul className="text-xs">
-          <li>About us</li>
-          <li>Privacy & Policy</li>
-          <li>Terms of use</li>
-          <li>Delivery & returns</li>
+          <li>Acerca de</li>
+          <li>Privacidad y Política</li>
+          <li>Términos de uso</li>
+          <li>Delivery & Devoluciones</li>
         </ul>
       </div>
 
       <div>
-        <h1 className="font-bold">Other</h1>
+        <h1 className="font-bold">Otros</h1>
         <ul className="text-xs">
           <li>FAQ</li>
-          <li>Customer Service</li>
+          <li>Servicio al cliente</li>
         </ul>
       </div>
 
       <div>
-        <h1 className="font-bold">Contacts</h1>
+        <h1 className="font-bold">Contactos</h1>
         <ul className="text-xs">
           <li>+54 3875850811</li>
           <li>mauroagustin.lopez.456@gmail.com</li>

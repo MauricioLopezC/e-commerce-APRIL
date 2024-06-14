@@ -1,7 +1,5 @@
 import { CalendarDaysIcon, CreditCardIcon, KeyIcon } from "@heroicons/react/24/outline";
 import MetodoDePago from "./MetodoDePago";
-import { carrito } from "@/data";
-import CarritoItem from "../carrito/CarritoItem";
 import PagoGroup from "./PagoGroup";
 
 function page() {
@@ -14,34 +12,34 @@ function page() {
         <div id="DatosGroup" className="max-w-xl">
           <div>
             <div className="mt-6">
-              <h1 className="font-bold text-lg">INFORMACION PERSONAL</h1>
+              <h1 className="font-bold text-lg">INFORMACIÓN PERSONAL</h1>
               <div className="grid grid-cols-1 sm:grid-cols-6 gap-3">
-                <input type="text" placeholder="Numero de telefono" className="border border-black sm:col-span-3 py-1 pl-3" />
+                <input type="text" placeholder="Numero de teléfono" className="border border-black sm:col-span-3 py-1 pl-3" />
                 <input type="text" placeholder="Email" className="border border-black sm:col-span-3 py-1 pl-3" />
               </div>
             </div>
 
             <div className="mt-6">
-              <h1 className="font-bold text-lg">INFORMACION DE ENVIO</h1>
+              <h1 className="font-bold text-lg">INFORMACIÓN DE ENVIO</h1>
               <div className="grid grid-cols-1 sm:grid-cols-6 gap-3">
                 <input type="text" placeholder="Nombre" className="border border-black sm:col-span-3 py-1 pl-3" />
                 <input type="text" placeholder="Apellido" className="border border-black sm:col-span-3 py-1 pl-3" />
-                <input type="text" placeholder="Pais" className="border border-black sm:col-span-3 py-1 pl-3" />
+                <input type="text" placeholder="País" className="border border-black sm:col-span-3 py-1 pl-3" />
                 <div className="grid grid-cols-subgrid sm:col-span-3">
                   <input type="text" placeholder="Ciudad" className="border border-black col-start-3 col-span-2 sm:col-span-2 py-1 pl-3" />
                   <input type="text" placeholder="C.P." className="border border-black col-start-5 sm:col-span-1 py-1 pl-3" />
                 </div>
-                <input type="text" placeholder="Pais" className="border border-black sm:col-span-6 py-1 pl-3" />
+                <input type="text" placeholder="País" className="border border-black sm:col-span-6 py-1 pl-3" />
               </div>
             </div>
 
             <div id="pagoGroup" className="flex flex-col max-w-xl gap-4 mt-6 w-full">
               <div>
-                <h1 className="font-bold text-lg">METODO DE PAGO</h1>
+                <h1 className="font-bold text-lg">MÉTODO DE PAGO</h1>
                 <MetodoDePago />
               </div>
               <div className="flex flex-col gap-2">
-                <h1 className="font-bold text-lg">Detalles de la tarjeta</h1>
+                <h1 className="font-bold text-lg">DETALLES DE TARJETA</h1>
                 <div className="relative">
                   <CreditCardIcon className="w-6 h-6 absolute left-3 inset-y-0 my-auto" />
                   <input

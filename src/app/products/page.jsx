@@ -3,6 +3,10 @@ import { Menu, MenuButton, MenuItem, MenuItems, Transition } from '@headlessui/r
 import ProductCardV2 from "@/components/ProductCardV2"
 import productos from "@/data"
 
+export const metadata = {
+  title: 'Products page'
+}
+
 function page() {
   return (
     <section className="mt-6">
@@ -14,7 +18,7 @@ function page() {
         <div className="flex justify-between">
           <FiltersMenu />
           <div className="flex items-center">
-            Sort by
+            Ordenar por
             <ChevronDownIcon className="h-4 w-4 mx-2" />
           </div>
         </div>
@@ -39,7 +43,7 @@ function FiltersMenu() {
       <Menu>
         <MenuButton className="flex items-center">
           <AdjustmentsHorizontalIcon className="h-6 w-6 mx-2" />
-          Filters
+          Filtros
         </MenuButton>
         <Transition
           enter="transition ease-out duration-75"

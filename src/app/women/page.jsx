@@ -8,7 +8,7 @@ import ProductCardV2 from "@/components/ProductCardV2"
 function Womenpage() {
   return (
     <section>
-      <h1 className="font-bold text-xl flex justify-center items-center">WOMEN</h1>
+      <h1 className="font-bold text-xl flex justify-center items-center mt-16">MUJER</h1>
 
 
       {/* products section */}
@@ -16,7 +16,7 @@ function Womenpage() {
         <div className="flex justify-between">
           <FiltersMenu />
           <div className="flex items-center">
-            Sort by
+            Ordenar por
             <ChevronDownIcon className="h-4 w-4 mx-2" />
           </div>
         </div>
@@ -40,7 +40,7 @@ function FiltersMenu() {
       <Menu>
         <MenuButton className="flex items-center">
           <AdjustmentsHorizontalIcon className="h-6 w-6 mx-2" />
-          Filters
+          Filtros
         </MenuButton>
         <Transition
           enter="transition ease-out duration-75"

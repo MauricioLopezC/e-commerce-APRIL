@@ -17,7 +17,7 @@ function PagoGroup() {
           <h1 className="font-bold text-xl">TU ORDEN</h1>
           <div className='flex flex-col gap-4 items-center'>
             {carrito.map((item) => (
-              <CarritoItem img={item.imgSrc} name={item.Nombre} price={item.price} key={item.id} />
+              <CarritoItem producto={item} key={item.id} />
             ))}
           </div>
         </div>

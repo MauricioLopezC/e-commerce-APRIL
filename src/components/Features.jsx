@@ -8,8 +8,8 @@ function Features() {
           <TruckIcon className="w-10 h-10" />
         </div>
         <div className="text-nowrap flex flex-col justify-center">
-          <h3 className="font-bold">FREE SHIPPING</h3>
-          <p className="text-gray-600">Over 100 USD</p>
+          <h3 className="font-bold">ENVIO GRATIS</h3>
+          <p className="text-gray-600">Sobre los 100 USD</p>
         </div>
       </div>
 
@@ -18,8 +18,8 @@ function Features() {
           <ReceiptPercentIcon className="w-10 h-10" />
         </div>
         <div className="text-nowrap flex flex-col justify-center">
-          <h3 className="font-bold ">DISCOUNT</h3>
-          <p className="text-gray-600">15% on a first purchase</p>
+          <h3 className="font-bold ">DESCUENTO</h3>
+          <p className="text-gray-600">15% en la primera compra</p>
         </div>
       </div>
 
@@ -28,8 +28,8 @@ function Features() {
           <ArrowPathIcon className="h-10 w-10" />
         </div>
         <div className="text-nowrap flex flex-col justify-center">
-          <h3 className="font-bold">30 DAYS RETURN</h3>
-          <p className="text-gray-600">Simple return within 30 days</p>
+          <h3 className="font-bold">30 DIAS DE DEVOLUCIÓN</h3>
+          <p className="text-gray-600">devolución en 30 Dias</p>
         </div>
       </div>
 
@@ -38,8 +38,8 @@ function Features() {
           <GlobeAmericasIcon className="h-10 w-10" />
         </div>
         <div className="text-nowrap flex flex-col justify-center">
-          <h3 className="font-bold">RECYCLE</h3>
-          <p className="text-gray-600">We recycle for sustainabiblity</p>
+          <h3 className="font-bold">RECICLAJE</h3>
+          <p className="text-gray-600">Reciclamos para la sostenibilidad</p>
         </div>
       </div>
     </div>

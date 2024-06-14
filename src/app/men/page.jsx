@@ -9,7 +9,7 @@ function Menpage() {
   console.log(filteredArray)
   return (
     <section>
-      <h1 className="font-bold text-xl flex justify-center items-center">MEN</h1>
+      <h1 className="font-bold text-xl flex justify-center items-center mt-16">HOMBRE</h1>
 
 
       {/* products section */}
@@ -17,7 +17,7 @@ function Menpage() {
         <div className="flex justify-between">
           <FiltersMenu />
           <div className="flex items-center">
-            Sort by
+            Ordenar por
             <ChevronDownIcon className="h-4 w-4 mx-2" />
           </div>
         </div>
@@ -41,7 +41,7 @@ function FiltersMenu() {
       <Menu>
         <MenuButton className="flex items-center">
           <AdjustmentsHorizontalIcon className="h-6 w-6 mx-2" />
-          Filters
+          Filtros
         </MenuButton>
         <Transition
           enter="transition ease-out duration-75"
