@@ -1,6 +1,8 @@
 'use client'
 import { useProductStore } from "@/store/productStore"
 import CarritoItem from "../carrito/CarritoItem"
+import { useState } from "react"
+import ConfirmDialog from "./ConfirmDialog"
 //en los componentes cliente da un error al solo poner el nombre de la imagen que se encuentra en static
 //en vez de eso hay que poner con backticks indicando `/${imgSrc}`
 
@@ -8,7 +10,9 @@ function PagoGroup() {
   const carrito = useProductStore((store) => store.carrito)
   const precio = carrito.reduce((previous, current) => (
     previous + current.price
-  ), 0) 
+  ), 0)
+
+  const [confirmOpen, setConfirmOpen] = useState(false)
 
   return (
     <div id="PagoGroup">
@@ -25,8 +29,11 @@ function PagoGroup() {
           <p className="font-bold">PRECIO TOTAL</p>
           <p className="font-bold">{precio} USD</p>
         </div>
-        <button className='max-w-md w-full px-4 py-2 bg-black text-white mt-2'> PAGAR </button>
+        <button className='max-w-md w-full px-4 py-2 bg-black text-white mt-2' onClick={() => {
+          setConfirmOpen(true);
+        }}> PAGAR </button>
       </div>
+      <ConfirmDialog isOpen={confirmOpen} setIsOpen={setConfirmOpen} />
     </div>
   )
 }

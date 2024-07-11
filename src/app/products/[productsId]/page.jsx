@@ -40,7 +40,7 @@ function page({ params }) {
           </button>
         </div>
         <CarritoButton producto={producto} cantidad={cantidad} />
-        <p className="text-xs text-gray-600">Envio gratis a partir de los 100USD</p>
+        <p className="text-xs text-gray-600 mt-3">Envio gratis a partir de los 100USD</p>
 
         <div className="mt-6">
           <h1 className="font-bold text-lg">DESCRIPCION</h1>
@@ -56,9 +56,12 @@ export default page
 
 function CantidadSelect({ setCantidad }) {
   return (
-    <Select className="w-full py-1.5 bg-white focus:bg-gray-200" name="status" aria-label="Project status" onChange={(e) => {
-      setCantidad(parseInt(e.target.value));
-    }}>
+    <Select className="w-full py-1.5 bg-white focus:bg-gray-200"
+      name="status"
+      aria-label="Project status"
+      onChange={(e) => {
+        setCantidad(parseInt(e.target.value));
+      }}>
       <option value={1}>1</option>
       <option value={2}>2</option>
       <option value={3}>3</option>

@@ -7,7 +7,8 @@ export default function Home() {
   return (
     <main>
       <div className="h-screen">
-        <div className="relative h-3/4 bg-[#333232] bg-cover bg-no-repeat bg-center" style={{ backgroundImage: "url('/portada.jpg')", height: "75%", }}>
+        <div className="relative h-3/4 bg-[#333232] bg-cover bg-no-repeat bg-center"
+          style={{ backgroundImage: "url('/portada.jpg')", height: "75%", }}>
           {/*<img src="portada.jpg" alt="" className="rounded-t-lg rounded-b-lg object-none h-3/4 w-full px-2 " /> */}
           <div className="absolute inset-0 flex justify-center items-center">
             <Link href={'/products'}>
@@ -31,8 +32,6 @@ export default function Home() {
               <ProductCard image={item.imgSrc} titile={item.Nombre} price={item.price} key={id} />
             </Link>
           ))}
-
-
         </div>
       </section>
     </main>

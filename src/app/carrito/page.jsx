@@ -1,4 +1,3 @@
-//import { carrito } from '@/data'
 import Link from 'next/link'
 import CarritoList from './CarritoList'
 import TotalList from './TotalList'

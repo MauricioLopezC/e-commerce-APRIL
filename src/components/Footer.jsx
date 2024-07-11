@@ -46,10 +46,10 @@ function Footer() {
 
         <ul className="flex gap-1">
           <li>
-            <Instagram  className="w-6 h-6"/>
+            <Instagram className="w-6 h-6" />
           </li>
           <li>
-            <Facebook className="w-6 h-6"/>
+            <Facebook className="w-6 h-6" />
           </li>
           <li>
             <Twitter className="w-6 h-6" />
