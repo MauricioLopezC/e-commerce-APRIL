@@ -1,12 +1,15 @@
 import { AdjustmentsHorizontalIcon, ChevronDownIcon } from "@heroicons/react/24/outline"
 import { Menu, MenuButton, MenuItem, MenuItems, Transition } from '@headlessui/react'
 import ProductCardV2 from "@/components/ProductCardV2"
-import productos from "@/data"
+//trabajar despues aqui
 
+async function getProducts() {
+  const res = await fetch('localhost:3000/api/products')
+  return res.json()
+}
 
-function Menpage() {
-  const filteredArray = productos.filter((item) => item.categoria === 'men' || item.categoria === 'unisex')
-  console.log(filteredArray)
+async function Menpage() {
+  const products = await getProducts()
   return (
     <section>
       <h1 className="font-bold text-xl flex justify-center items-center mt-16">HOMBRE</h1>
@@ -23,12 +26,10 @@ function Menpage() {
         </div>
 
         <div className=" grid grid-cols-1 lg:grid-cols-3 md:grid-cols-2 justify-items-center justify-center gap-y-14 gap-x-14">
-          {/* productos.map((item, id) => (
-            <ProductCardV2 image={item.imgSrc} title={item.Nombre.toUpperCase()} price={item.price} key={id} />
-          ))*/}
-          {productos.filter((item) => item.categoria === 'men' || item.categoria === 'unisex').map((item, id) => (
-            <ProductCardV2 image={item.imgSrc} title={item.Nombre.toUpperCase()} price={item.price} key={id} id={item.id} />
-          ))}
+          {/* {productos.filter((item) => item.categoria === 'men' || item.categoria === 'unisex').map((item, id) => ( */}
+          {/*   <ProductCardV2 image={item.imgSrc} title={item.Nombre.toUpperCase()} price={item.price} key={id} id={item.id} /> */}
+          {/* ))} */}
+          <h1></h1>
         </div>
       </div>
     </section>
