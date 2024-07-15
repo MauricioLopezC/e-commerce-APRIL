@@ -11,7 +11,7 @@ datasource db {
 }
 
 model Product {
-  id          Int      @id @default(autoincrement())
+  id          Int        @id @default(autoincrement())
   name        String
   price       Float
   description String
@@ -21,6 +21,7 @@ model Product {
   stock       Stock?
   images      Images[]
   sex         String
+  cartItem    CartItem[]
 }
 
 model Stock {
@@ -35,4 +36,31 @@ model Images {
   product   Product @relation(fields: [productId], references: [id])
   productId Int
   imgSrc    String
+}
+
+model User {
+  id        Int      @id @default(autoincrement())
+  dni       Int?     @unique
+  name      String
+  email     String   @unique
+  password  String
+  cart      Cart?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Cart {
+  id        Int        @id @default(autoincrement())
+  user      User       @relation(fields: [userId], references: [id])
+  userId    Int        @unique //necesary for one to one relations
+  updatedAt DateTime?
+  CartItem  CartItem[]
+}
+
+model CartItem {
+  id        Int     @id @default(autoincrement())
+  cart      Cart    @relation(fields: [cartId], references: [id])
+  cartId    Int     @unique
+  product   Product @relation(fields: [productId], references: [id])
+  productId Int     @unique
 }
