@@ -1,8 +1,34 @@
 'use client'
 import Link from "next/link"
+import { useState } from "react"
+import { signIn } from 'next-auth/react'
+import { useRouter } from "next/navigation"
+
 function LoginPage() {
+  const [errorMessage, setErrorMessage] = useState('')
+  const router = useRouter()
 
+  const handdleSubmit = async (e) => {
+    e.preventDefault()
+    const email = e.target[0].value
+    const password = e.target[1].value
+    try {
+      const res = await signIn("credentials", {
+        email: email,
+        password: password,
+        redirect: false,
+      })
+      console.log("ress", res)
+      if (res.error) {
+        setErrorMessage(res.error)
+      } else {
+        router.push("/")
+      }
+    } catch (error) {
+      setErrorMessage(error)
+    }
 
+  }
   return (
     <section className="mb-16">
       <div id="" className="container mx-auto bg-gray-50 max-w-lg shadow rounded-lg mt-8 pb-8">
@@ -11,9 +37,7 @@ function LoginPage() {
           <h2 className="font-bold text-lg">Ingrese a su cuenta</h2>
         </div>
         <form className="space-y-4 mt-4"
-          onSubmit={(e) => {
-            e.preventDefault()
-          }}
+          onSubmit={handdleSubmit}
         >
           <div>
             <label className="font-medium">
@@ -23,6 +47,7 @@ function LoginPage() {
               type="email"
               required
               className="w-full mt-2 px-3 py-2 text-gray-500 bg-transparent outline-none border focus:border-gray-900 shadow-sm rounded-lg"
+              name="email"
             />
           </div>
           <div>
@@ -33,12 +58,14 @@ function LoginPage() {
               type="password"
               required
               className="w-full mt-2 px-3 py-2 text-gray-500 bg-transparent outline-none border focus:border-gray-900 shadow-sm rounded-lg"
+              name="password"
             />
           </div>
 
           <button type="submit" className="w-full px-4 py-2 text-white font-medium bg-black hover:bg-black/80 active:bg-white duration-150">
             Sign in
           </button>
+          <p className="text-center text-red-500">{errorMessage}</p>
           <p className="text-center">No tiene una cuenta? <Link href="/login/register" className="font-medium text-sky-600 hover:text-blue-400">Sign up</Link></p>
         </form>
       </div>
