@@ -1,34 +1,13 @@
 'use client'
 import Link from "next/link"
 import { useState } from "react"
-import { signIn } from 'next-auth/react'
 import { useRouter } from "next/navigation"
+import { login } from "@/lib/actions"
 
 function LoginPage() {
   const [errorMessage, setErrorMessage] = useState('')
   const router = useRouter()
 
-  const handdleSubmit = async (e) => {
-    e.preventDefault()
-    const email = e.target[0].value
-    const password = e.target[1].value
-    try {
-      const res = await signIn("credentials", {
-        email: email,
-        password: password,
-        redirect: false,
-      })
-      console.log("ress", res)
-      if (res.error) {
-        setErrorMessage(res.error)
-      } else {
-        router.push("/")
-      }
-    } catch (error) {
-      setErrorMessage(error)
-    }
-
-  }
   return (
     <section className="mb-16">
       <div id="" className="container mx-auto bg-gray-50 max-w-lg shadow rounded-lg mt-8 pb-8">
@@ -37,7 +16,15 @@ function LoginPage() {
           <h2 className="font-bold text-lg">Ingrese a su cuenta</h2>
         </div>
         <form className="space-y-4 mt-4"
-          onSubmit={handdleSubmit}
+          action={async (data) => {
+            const res = await login(data)
+            console.log(res)
+            if (res.error) {
+              setErrorMessage(res.error)
+            } else {
+              router.push('/')
+            }
+          }}
         >
           <div>
             <label className="font-medium">
@@ -66,7 +53,7 @@ function LoginPage() {
             Sign in
           </button>
           <p className="text-center text-red-500">{errorMessage}</p>
-          <p className="text-center">No tiene una cuenta? <Link href="/login/register" className="font-medium text-sky-600 hover:text-blue-400">Sign up</Link></p>
+          <p className="text-center">No tiene una cuenta? <Link href="/auth/register" className="font-medium text-sky-600 hover:text-blue-400">Sign up</Link></p>
         </form>
       </div>
     </section>

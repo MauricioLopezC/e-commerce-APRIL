@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import { prisma } from "@/libs/prisma";
-import bcrypt from 'bcrypt'
+import bcrypt from 'bcryptjs'
 
 export async function POST(request, { params }) {
   const data = await request.json()
@@ -25,5 +25,12 @@ export async function POST(request, { params }) {
     }
   })
 
-  return NextResponse.json({ user: newUser, message: 'user created successfully' })
+  //create a cart for the new user 
+  const newUserCart = await prisma.cart.create({
+    data: {
+      userId: newUser.id,
+    }
+  })
+
+  return NextResponse.json({ user: newUser, cart: newUserCart, message: 'user created successfully' })
 }

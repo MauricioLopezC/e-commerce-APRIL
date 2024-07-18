@@ -1,18 +1,22 @@
 import { auth } from "@/auth"
-async function UserPage() {
+import { signOut } from "@/auth"
+export default async function DashBoard() {
   const session = await auth()
-  if (!session) {
-    return (
-      <div>
-        <h1>NO AUTENTICADO</h1>
-      </div>
-    )
-  }
+
+  if (!session.user) return null
+  console.log(session)
+
   return (
-    <div>
+    <div className="flex justify-center items-center">
       <pre>{JSON.stringify(session, null, 2)}</pre>
+      <form
+        action={async () => {
+          "use server"
+          await signOut()
+        }}
+      >
+        <button type="submit" className="px-4 py-2 bg-sky-400">Sign Out</button>
+      </form>
     </div>
   )
 }
-
-export default UserPage

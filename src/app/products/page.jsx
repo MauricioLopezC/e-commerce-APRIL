@@ -18,6 +18,7 @@ async function getProducts() {
 
 async function page() {
   const products = await getProducts()
+  console.log(products)
   return (
     <section className="mt-6">
       <h1 className="font-bold text-xl flex justify-center items-center">PRODUCTOS</h1>

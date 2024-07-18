@@ -1,4 +1,6 @@
 'use server'
+import { AuthError } from "next-auth"
+import { signIn } from "@/auth.js"
 export async function register(data) {
   try {
     const name = data.get('nameInput')
@@ -27,14 +29,13 @@ export async function login(data) {
     await signIn("credentials", {
       email: data.get('email'),
       password: data.get('password'),
-      redirectTo: "/products"
+      redirect: false,
     })
     return { success: true }
   } catch (error) {
-    // if (error instanceof AuthError) {
-    //   return { error: error.cause?.err?.message }
-    // }
-    // return { error: "Error 500" }
-    return { error: error.cause?.err?.message }
+    if (error instanceof AuthError) {
+      return { error: error.cause?.err?.message }
+    }
+    return { error: "Error 500" }
   }
 }

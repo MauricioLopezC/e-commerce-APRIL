@@ -1,42 +1,47 @@
 'use client'
 import ConfirmDialog from "@/app/products/[productsId]/ConfirmDialog"
-import { useProductStore } from "@/store/productStore"
 import { useState } from "react"
+import { useRouter } from "next/navigation"
 
-function CarritoButton({ producto, cantidad }) {
-  const carrito = useProductStore((state) => state.carrito)
-  const updateCarrito = useProductStore((state) => state.updateCarrito)
-
+export default function CarritoButton({ productID, quantity, isLoggedIn, userID }) {
   let [isOpen, setIsOpen] = useState(false)
+  const router = useRouter()
+
+  const addToCart = async (productId, userId, quantity) => {
+    console.log("Agregaste al carritooooo")
+    console.log(productId, userId, quantity)
+    const res = await fetch(`http://localhost:3000/api/carrito`, {
+      method: 'POST',
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        productId,
+        userId,
+        quantity,
+      }),
+    })
+    return res.json()
+  }
 
   return (
     <>
       <button
         className='max-w-md w-full px-4 py-2 bg-black text-white mt-2'
-        onClick={() => {
-          let band = false
-
-          carrito.forEach((item) => {
-            if (item.id === producto.id) {
-              band = true
-            }
-          })
-
-          if (band) {
-            const updatedCarrito = carrito.map((item) => {
-              if (item.id === producto.id) {
-                return { ...producto, cantidad: cantidad }
-              } else {
-                return item
-              }
-            })
-            updateCarrito(updatedCarrito)
+        onClick={async () => {
+          if (!isLoggedIn) {
+            return alert("Debes iniciar sesion")
           } else {
-            updateCarrito([...carrito, { ...producto, cantidad: cantidad }])
+            console.log(productID, userID, quantity)
+            const res = await addToCart(productID, userID, quantity)
+            if (res.error) {
+              alert("Error el producto ya fue agregado")
+            } else {
+              console.log(res)
+              setIsOpen(true)
+              router.refresh()
+            }
           }
-
-          //confirm dilog
-          setIsOpen(true)
         }}
       >
         Agregar al carrito
@@ -46,4 +51,3 @@ function CarritoButton({ producto, cantidad }) {
   )
 }
 
-export default CarritoButton

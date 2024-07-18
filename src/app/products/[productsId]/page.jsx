@@ -1,8 +1,7 @@
 import { StarIcon } from "@heroicons/react/24/solid"
-import { HeartIcon } from "@heroicons/react/24/outline"
-import { Select } from "@headlessui/react"
 import CarouselCustom from "./Carousel" //carousel
-import CarritoButton from "@/components/CarritoButton"
+import ProductOptions from "./ProuctOptions"
+import { auth } from "@/auth"
 
 async function getTheProduct(id) {
   const res = await fetch(`http://localhost:3000/api/products/${id}`, {
@@ -15,10 +14,11 @@ async function getTheProduct(id) {
 }
 
 async function ProductPage({ params }) {
-  // const [cantidad, setCantidad] = useState(1)
-  const cantidad = 1
   const product = await getTheProduct(params.productsId)
   const images = await product.images
+  const session = await auth()
+
+
 
   return (
     <section className="mb-16 lg:flex lg:justify-center lg:mt-6 lg:gap-16 mx-auto container">
@@ -40,15 +40,7 @@ async function ProductPage({ params }) {
           <StarIcon className="w-6 h-6" />
         </div>
 
-        <div className="flex flex-row gap-2 mt-2">
-          <div className="basis-5/6 border border-black">
-            {/* <CantidadSelect setCantidad={setCantidad} /> */}
-          </div>
-          <button className="border border-black basis-1/6 flex justify-center py-1 px-1">
-            <HeartIcon className="w-6 h-6" />
-          </button>
-        </div>
-        <CarritoButton producto={product} cantidad={cantidad} />
+        <ProductOptions productId={product.id} isLoggedIn={session.user} userId={session.user.id} />
         <p className="text-xs text-gray-600 mt-3">Envio gratis a partir de los 100USD</p>
 
         <div className="mt-6">
