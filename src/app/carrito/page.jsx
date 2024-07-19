@@ -15,7 +15,7 @@ function page() {
         <div className='flex flex-col items-center'>
           <div className='max-w-md mt-6 divide-y-2'>
             <h2 className='py-6 font-bold text-xl'>TOTAL</h2>
-            {/* <TotalList /> */}
+            <TotalList />
             {/* Promo and chekout button */}
             <div>
               <div className='max-w-md'>

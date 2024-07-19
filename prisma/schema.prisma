@@ -62,6 +62,8 @@ model CartItem {
   cart      Cart    @relation(fields: [cartId], references: [id])
   cartId    Int
   product   Product @relation(fields: [productId], references: [id])
-  productId Int     @unique
+  productId Int 
   quantity  Int
 }
+//importante que no sea unica asi podemos guardar todos los productos de todos los usuarios y luego lo relacionamos con el 
+//cart que si teine userId unico

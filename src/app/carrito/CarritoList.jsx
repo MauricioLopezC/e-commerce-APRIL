@@ -22,8 +22,9 @@ async function CarritoList() {
     <div>
       <h1 className='font-bold text-lg flex justify-center lg:justify-start'>PRODUCTOS</h1>
       <div className='flex flex-col gap-4 items-center'>
-        {carrito.CartItem.map((cartItem) => (
+        {carrito.CartItem.map((cartItem, idx) => (
           <CarritoItem
+            key={idx}
             productName={cartItem.product.name}
             imgSrc={cartItem.product.images[0].imgSrc}
             productPrice={cartItem.product.price}

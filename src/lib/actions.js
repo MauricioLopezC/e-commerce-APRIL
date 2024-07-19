@@ -1,6 +1,7 @@
 'use server'
 import { AuthError } from "next-auth"
 import { signIn } from "@/auth.js"
+import { sendEmail } from "./brevo"
 export async function register(data) {
   try {
     const name = data.get('nameInput')
@@ -38,4 +39,10 @@ export async function login(data) {
     }
     return { error: "Error 500" }
   }
+}
+
+export async function handdleCheckout(data, products) {
+  console.log("FORM DATA", data)
+  console.log(products)
+  //await sendEmail()
 }
