@@ -13,10 +13,25 @@ async function getTheProduct(id) {
   return res.json()
 }
 
+async function getStock(id) {
+  const res = await fetch(`http://localhost:3000/api/stock/${id}`, {
+    method: 'GET',
+    headers: {
+      "Content-Type": "application/json"
+    }
+  })
+  return res.json()
+}
+
+
 async function ProductPage({ params }) {
   const product = await getTheProduct(params.productsId)
   const images = await product.images
+  const stock = await getStock(params.productsId)
+  //por alguna razon no puedo trear el producto con su determinado stock
+  //con prisma usando inclde: , hare otra api route para trear el stock usando el productId
   const session = await auth()
+  console.log("STOCCCCK", stock)
 
 
 
@@ -41,7 +56,13 @@ async function ProductPage({ params }) {
         </div>
 
         <ProductOptions productId={product.id} isLoggedIn={session.user} userId={session.user.id} />
-        <p className="text-xs text-gray-600 mt-3">Envio gratis a partir de los 100USD</p>
+        <p className="text-xs text-gray-600 my-3">Envio gratis a partir de los 100USD</p>
+        <div id="details" className="flex flex-col divide-y">
+          <h1 className="font-semibold text-lg py-2 px-2">DISPONIBLES: {stock.stock}</h1>
+          <h1 className="font-semibold text-lg py-2 px-2">TALLE: {product.size.toUpperCase()}</h1>
+          <h1 className="font-semibold text-lg py-2 px-2">COLOR: {product.color}</h1>
+        </div>
+
 
         <div className="mt-6">
           <h1 className="font-bold text-lg">DESCRIPCION</h1>

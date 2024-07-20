@@ -44,14 +44,14 @@ export async function POST(request, { params }) {
 
   const actualStock = stock.stock
 
-  const newStock = await prisma.stock.update({
-    where: {
-      ProductId: ReqProductId
-    },
-    data: {
-      stock: actualStock - ReqQuantity
-    }
-  })
+  // const newStock = await prisma.stock.update({
+  //   where: {
+  //     ProductId: ReqProductId
+  //   },
+  //   data: {
+  //     stock: actualStock - ReqQuantity
+  //   }
+  // })
 
   return NextResponse.json(cartItem)
 }

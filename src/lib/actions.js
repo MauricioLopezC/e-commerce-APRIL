@@ -41,8 +41,22 @@ export async function login(data) {
   }
 }
 
-export async function handdleCheckout(data, products) {
+export async function handdleCheckout(data, cartItems) {
+  const email = data.get('emailInput')
   console.log("FORM DATA", data)
-  console.log(products)
-  //await sendEmail()
+  console.log("Prducts", cartItems)
+  await sendEmail(email, cartItems)
+  //
+  //
+  //actualizar el stock en el carrito
+  // const res = fetch("http://localhost:3000/api/purchases", {
+  //   method: 'PATCH',
+  //   headers: {
+  //     'Content-Type': 'application/json',
+  //   },
+  //   body: JSON.stringify({
+  //     cartItems
+  //   })
+  // })
+
 }

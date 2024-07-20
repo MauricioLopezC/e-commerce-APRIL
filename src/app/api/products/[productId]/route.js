@@ -8,9 +8,11 @@ export async function GET(request, { params }) {
       id: id
     },
     include: {
-      images: true
-    }
+      images: true,
+      stock: true
+    },
   })
+
   return NextResponse.json(product)
 }
 

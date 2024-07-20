@@ -1,46 +1,63 @@
 import { AdjustmentsHorizontalIcon, ChevronDownIcon } from "@heroicons/react/24/outline"
 import { Menu, MenuButton, MenuItem, MenuItems, Transition } from '@headlessui/react'
 import ProductCardV2 from "@/components/ProductCardV2"
+import { SkullIcon } from "lucide-react"
 
 export const metadata = {
-  title: 'Products page'
+  title: 'Search'
 }
 
-async function getProducts() {
-  const res = await fetch('http://localhost:3000/api/products', {
-    method: 'GET',
+async function getProducts(word) {
+  const res = await fetch('http://localhost:3000/api/search', {
+    method: 'POST',
     headers: {
       "Content-Type": "application/json"
-    }
+    },
+    body: JSON.stringify({
+      word
+    })
   })
   return res.json()
 }
 
-async function page() {
-  const products = await getProducts()
-  //console.log(products)
+async function SearchPage(props) {
+  //props es un obj con
+  const searchWord = props.searchParams.name
+  console.log("S W => ", searchWord)
+  const products = await getProducts(searchWord)
+  console.log(products)
+
   return (
-    <section className="mt-6">
+    <section className="mt-6 min-h-[70vh]">
       <h1 className="font-bold text-xl flex justify-center items-center">PRODUCTOS</h1>
 
+      {products.length === 0 &&
+        <div className="mt-16 flex justify-center items-center">
+          <h1 className="font-bold">NO HAY RESULTADOS</h1>
+          <SkullIcon className="w-6 h-6 ml-2" />
+        </div>
+      }
 
       {/* products section */}
-      <div className="w-fit mx-auto mt-10 mb-5">
-        <div className="flex justify-between">
-          <FiltersMenu />
-          <div className="flex items-center">
-            Ordenar por
-            <ChevronDownIcon className="h-4 w-4 mx-2" />
+      {products.length !== 0 &&
+        <div className="w-fit mx-auto mt-10 mb-5">
+          <div className="flex justify-between">
+            <FiltersMenu />
+            <div className="flex items-center">
+              Ordenar por
+              <ChevronDownIcon className="h-4 w-4 mx-2" />
+            </div>
+          </div>
+
+
+          <div className=" grid grid-cols-1 lg:grid-cols-3 md:grid-cols-2 justify-items-center justify-center gap-y-14 gap-x-14">
+            {products.map((item) => (
+              <ProductCardV2 id={item.id} title={item.name} price={item.price} imgSrc={item.images[0].imgSrc} key={item.id} />
+            ))}
           </div>
         </div>
+      }
 
-        <div className=" grid grid-cols-1 lg:grid-cols-3 md:grid-cols-2 justify-items-center justify-center gap-y-8 gap-x-8">
-          {products.map((item) => (
-            <ProductCardV2 id={item.id} title={item.name} price={item.price} imgSrc={item.images[0].imgSrc} key={item.id} />
-          ))}
-
-        </div>
-      </div>
     </section>
   )
 }
@@ -89,4 +106,4 @@ function FiltersMenu() {
   )
 }
 
-export default page
+export default SearchPage

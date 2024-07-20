@@ -7,7 +7,7 @@ function page() {
   return (
     <>
       <h1 className="font-bold text-xl flex justify-center items-center mt-4">CARRITO</h1>
-      <section className='container mx-auto mb-6 lg:flex lg:justify-around mt-4'>
+      <section className='container mx-auto mb-6 min-h-[70vh] lg:flex lg:justify-around mt-4'>
 
         <div>
           <CarritoList />

@@ -1,12 +1,11 @@
 import { Dialog, DialogPanel, DialogTitle } from '@headlessui/react'
 import { MagnifyingGlassIcon } from '@heroicons/react/24/outline'
-import { useProductStore } from '@/store/productStore'
+import { useRouter } from 'next/navigation'
 import { useState } from 'react'
-import Link from 'next/link'
 
 function SearchDialog({ isOpen, setIsOpen }) {
-  const products = useProductStore((store) => store.productos)
-  const [productsFound, setProductsFound] = useState([])
+  const [searchWord, setSearchWord] = useState('')
+  const router = useRouter()
 
   return (
     <>
@@ -14,36 +13,39 @@ function SearchDialog({ isOpen, setIsOpen }) {
         <div className="fixed inset-0 flex w-screen items-center justify-center p-4">
           <DialogPanel className="w-1/2 space-y-4 border bg-white p-12">
             <DialogTitle className="font-bold text-center">Buscar Productos</DialogTitle>
-            <div className='relative'>
-              <MagnifyingGlassIcon className='h-6 w-6 absolute top-0 bottom-0 my-auto text-gray-400 left-3' />
-              <input
-                type="text"
-                placeholder="Search"
-                className="w-full py-3 pl-12 pr-4 text-gray-500 border rounded-md outline-none bg-gray-50 focus:bg-white focus:border-black"
-                onChange={(e) => {
-                  const filteredArray = products.filter((item) => (
-                    item.Nombre.toLowerCase().includes(e.target.value.toLowerCase())
-                  ))
-                  setProductsFound(filteredArray)
-                }}
-              />
-            </div>
-
-            <div className='flex flex-col gap-6'>
-              {productsFound.map((item) => (
-                <Link href={`/products/${item.id}`} key={item.id}>
-                  <button onClick={() => {
+            <form>
+              <div className='relative'>
+                <MagnifyingGlassIcon className='h-6 w-6 absolute top-0 bottom-0 my-auto text-gray-400 left-3' />
+                <input
+                  type="text"
+                  placeholder="Search"
+                  className="w-full py-3 pl-12 pr-4 text-gray-500 border rounded-md outline-none bg-gray-50 focus:bg-white focus:border-black"
+                  onChange={(e) => {
+                    e.preventDefault()
+                    console.log(e.target.value)
+                    //updateSearchWord(e.target.value)
+                    setSearchWord(e.target.value)
+                  }}
+                />
+              </div>
+              <div className="flex gap-4 mt-4">
+                <button
+                  className='bg-black text-white px-4 py-2'
+                  onClick={() => {
+                    console.log('CLICANKDO WN')
                     setIsOpen(false)
+                    router.push(`/search?name=${searchWord}`)
                   }}>
-                    <p className='font-bold'>{item.Nombre}</p>
-                  </button>
-                </Link>
-              ))}
-            </div>
-
-            <div className="flex gap-4">
-              <button onClick={() => setIsOpen(false)}>Cancel</button>
-            </div>
+                  Buscar
+                </button>
+                <button
+                  className='px-4 py-2 bg-gray-200'
+                  onClick={() => setIsOpen(false)}
+                >
+                  Cancelar
+                </button>
+              </div>
+            </form>
           </DialogPanel>
         </div>
       </Dialog>

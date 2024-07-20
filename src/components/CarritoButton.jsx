@@ -35,7 +35,7 @@ export default function CarritoButton({ productID, quantity, isLoggedIn, userID 
             console.log(productID, userID, quantity)
             const res = await addToCart(productID, userID, quantity)
             if (res.error) {
-              alert("Error el producto ya fue agregado")
+              alert(`Error: ${res.error}`)
             } else {
               console.log(res)
               setIsOpen(true)

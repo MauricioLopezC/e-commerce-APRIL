@@ -3,7 +3,17 @@ import ProductCard from "@/components/ProductCard";
 import productos from "@/data";
 import Link from "next/link";
 
-export default function Home() {
+async function getProducts() {
+  const res = await fetch('http://localhost:3000/api/products', {
+    method: 'GET',
+    headers: {
+      "Content-Type": "application/json"
+    }
+  })
+  return res.json()
+}
+
+export default async function Home() {
   return (
     <main>
       <div className="h-screen">
@@ -27,11 +37,11 @@ export default function Home() {
         </div>
         {/* new arrival*/}
         <div className="flex gap-6 overflow-x-auto mb-16 mx-6">
-          {productos.map((item, id) => (
-            <Link href={`/products/${item.id}`}>
-              <ProductCard image={item.imgSrc} titile={item.Nombre} price={item.price} key={id} />
-            </Link>
-          ))}
+          {/* {productos.map((item, id) => ( */}
+          {/*   <Link href={`/products/${item.id}`}> */}
+          {/*     <ProductCard image={item.imgSrc} titile={item.Nombre} price={item.price} key={id} /> */}
+          {/*   </Link> */}
+          {/* ))} */}
         </div>
       </section>
     </main>
