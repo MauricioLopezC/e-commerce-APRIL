@@ -11,7 +11,7 @@ export async function POST(request, { params }) {
     },
   })
   if (emailFound) {
-    return NextResponse.json({ user: null, message: 'email already exists' }, { status: 400 })
+    return NextResponse.json({ user: null, message: 'ya existe el email' }, { status: 400 })
   }
 
   //encrypt password
@@ -32,5 +32,5 @@ export async function POST(request, { params }) {
     }
   })
 
-  return NextResponse.json({ user: newUser, cart: newUserCart, message: 'user created successfully' })
+  return NextResponse.json({ user: newUser, cart: newUserCart, message: 'usuario creado correctamente' })
 }

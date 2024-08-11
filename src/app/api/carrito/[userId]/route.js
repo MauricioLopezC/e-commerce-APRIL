@@ -23,3 +23,30 @@ export async function GET(request, { params }) {
   return NextResponse.json(carrito)
 }
 
+export async function DELETE(request, { params }) {
+  const ReqUserId = Number(params.userId)
+  console.log('userID', ReqUserId)
+
+  try {
+
+    const userCart = await prisma.cart.findUnique({
+      where: {
+        userId: ReqUserId
+      }
+    })
+
+    const cartId = userCart.id
+    console.log("CARTID", cartId)
+
+    const deletedItems = await prisma.cartItem.deleteMany({
+      where: {
+        cartId: cartId
+      }
+    })
+
+    return NextResponse.json(deletedItems)
+  } catch (error) {
+    return NextResponse.json({ error: 'Error al eliminar los productos de carrito' })
+  }
+
+}

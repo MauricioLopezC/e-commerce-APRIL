@@ -21,12 +21,12 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
         })
 
         if (!userFound) {
-          throw new Error("User not found")
+          throw new Error("Usuario no encontrado")
         }
 
         const matchPass = await bcrypt.compare(credentials.password, userFound.password)
         if (!matchPass) {
-          throw new Error("Passwords do no match ")
+          throw new Error("Clave incorrecta ")
         }
 
         return {

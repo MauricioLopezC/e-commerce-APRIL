@@ -9,7 +9,7 @@ function LoginPage() {
   const router = useRouter()
 
   return (
-    <section className="mb-16">
+    <section className="mb-16 min-h-[70vh]">
       <div id="" className="container mx-auto bg-gray-50 max-w-lg shadow rounded-lg mt-8 pb-8">
         <div className="flex flex-col items-center">
           <h1 className="font-bold text-xl mt-4">APRIL STORE</h1>

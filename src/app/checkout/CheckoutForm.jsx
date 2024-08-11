@@ -1,13 +1,20 @@
 'use client'
 import { handdleCheckout } from "@/lib/actions"
 import { CalendarDaysIcon, CreditCardIcon, KeyIcon } from "@heroicons/react/24/outline";
+import { useRouter } from "next/navigation";
 
 function ChekOutForm({ session, cartItems }) {
   const radios = ["Tarjeta Visa/Mastercard", "Apple pay", "Paypal"]
+  const router = useRouter()
   return (
     <form action={async (data) => {
       console.log(cartItems)
-      handdleCheckout(data, cartItems)
+      const res = await handdleCheckout(data, cartItems)
+
+      if (res.success) {
+        router.push('/checkout/confirm')
+
+      }
     }}>
       <div id="DatosGroup" className="max-w-xl">
         <div>

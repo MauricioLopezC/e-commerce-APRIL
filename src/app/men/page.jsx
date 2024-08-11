@@ -1,18 +1,26 @@
 import { AdjustmentsHorizontalIcon, ChevronDownIcon } from "@heroicons/react/24/outline"
 import { Menu, MenuButton, MenuItem, MenuItems, Transition } from '@headlessui/react'
 import ProductCardV2 from "@/components/ProductCardV2"
-//trabajar despues aqui
+
+export const metadata = {
+  title: 'Men Page'
+}
 
 async function getProducts() {
-  const res = await fetch('localhost:3000/api/products')
+  const res = await fetch('http://localhost:3000/api/products?sex=hombre', {
+    method: 'GET',
+    headers: {
+      "Content-Type": "application/json"
+    }
+  })
   return res.json()
 }
 
-async function Menpage() {
+async function MenPage() {
   const products = await getProducts()
   return (
-    <section>
-      <h1 className="font-bold text-xl flex justify-center items-center mt-16">HOMBRE</h1>
+    <section className="mt-6">
+      <h1 className="font-bold text-xl flex justify-center items-center">PRODUCTOS</h1>
 
 
       {/* products section */}
@@ -25,16 +33,16 @@ async function Menpage() {
           </div>
         </div>
 
-        <div className=" grid grid-cols-1 lg:grid-cols-3 md:grid-cols-2 justify-items-center justify-center gap-y-14 gap-x-14">
-          {/* {productos.filter((item) => item.categoria === 'men' || item.categoria === 'unisex').map((item, id) => ( */}
-          {/*   <ProductCardV2 image={item.imgSrc} title={item.Nombre.toUpperCase()} price={item.price} key={id} id={item.id} /> */}
-          {/* ))} */}
-          <h1></h1>
+        <div className=" grid grid-cols-1 lg:grid-cols-3 md:grid-cols-2 justify-items-center justify-center gap-y-8 gap-x-8">
+          {products.map((item) => (
+            <ProductCardV2 id={item.id} title={item.name} price={item.price} imgSrc={item.images[0].imgSrc} key={item.id} />
+          ))}
         </div>
       </div>
     </section>
   )
 }
+
 
 function FiltersMenu() {
   return (
@@ -79,4 +87,4 @@ function FiltersMenu() {
   )
 }
 
-export default Menpage
+export default MenPage

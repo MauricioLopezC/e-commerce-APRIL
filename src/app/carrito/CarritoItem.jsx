@@ -48,7 +48,7 @@ function CarritoItem({ productName, imgSrc, productPrice, productQuantity, cartI
                 console.log('RES', res)
               }
             }}>
-            <MinusIcon className="h-4 w-4" />
+            <MinusIcon className="h-4 w-4 hover:text-red-500" />
           </button>
           <h2 className="px-2">{cantidad}</h2>
           <button
@@ -61,7 +61,7 @@ function CarritoItem({ productName, imgSrc, productPrice, productQuantity, cartI
                 console.log('RES', res)
               }
             }}>
-            <PlusIcon className="h-4 w-4" />
+            <PlusIcon className="h-4 w-4 hover:text-green-700" />
           </button>
         </div>
 

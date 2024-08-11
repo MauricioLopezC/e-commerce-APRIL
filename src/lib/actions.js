@@ -2,6 +2,10 @@
 import { AuthError } from "next-auth"
 import { signIn } from "@/auth.js"
 import { sendEmail } from "./brevo"
+import { auth } from "@/auth.js"
+import { NextResponse } from "next/server"
+
+
 export async function register(data) {
   try {
     const name = data.get('nameInput')
@@ -45,18 +49,28 @@ export async function handdleCheckout(data, cartItems) {
   const email = data.get('emailInput')
   console.log("FORM DATA", data)
   console.log("Prducts", cartItems)
-  await sendEmail(email, cartItems)
-  //
-  //
-  //actualizar el stock en el carrito
-  // const res = fetch("http://localhost:3000/api/purchases", {
-  //   method: 'PATCH',
-  //   headers: {
-  //     'Content-Type': 'application/json',
-  //   },
-  //   body: JSON.stringify({
-  //     cartItems
-  //   })
-  // })
+  const session = await auth()
+  const userId = session.user.id
 
+
+  try {
+    await sendEmail(email, cartItems)
+
+    //actualizar el stock en el carrito
+    const res = await fetch("http://localhost:3000/api/purchases", {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        cartItems
+      })
+    })
+
+    //y ahora debemos eliminar del carrito los productos comprado
+    const deleteRes = await fetch(`http://localhost:3000/api/carrito/${userId}`)
+    return { success: true }
+  } catch (error) {
+    return { error: "Error 500" }
+  }
 }
